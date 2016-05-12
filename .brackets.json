@@ -1,0 +1,9 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/Users/byrnes/GitHub/MyIonic2Project/platforms/ios/build/emulator/V2 Test.app/www/plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "/Users/byrnes/GitHub/MyIonic2Project/www/build/js/es6-shim.min.js",
+        "/Users/byrnes/GitHub/MyIonic2Project/www/build/js/angular2-polyfills.js",
+        "/Users/byrnes/GitHub/MyIonic2Project/app/pages/article/article.js",
+        "/Users/byrnes/GitHub/MyIonic2Project/app/app.js"
+    ]
+}
