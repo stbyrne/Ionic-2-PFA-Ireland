@@ -21,11 +21,14 @@ export class NewsPage {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     //
-    this.http.get('http://pfai.ie/mobile/pfainews').subscribe((data) => {
+    this.http.get('http://pfai.ie/mobile/pfainews').map(res => {
+      console.log(res)
+    })
+    /*.subscribe(data => {
       console.log(data);
     }, error => {
       console.log('Failed');
-    });
+    })*/;
 
 
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',

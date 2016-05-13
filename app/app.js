@@ -5,6 +5,7 @@ import {NewsPage} from './pages/news/news';
 import {SearchPage} from './pages/search/search';
 import {TransferListPage} from './pages/transfer-list/transfer-list';
 import {HTTP_PROVIDERS} from 'angular2/http';
+import 'rxjs/add/operator/map';
 
 
 @App({
