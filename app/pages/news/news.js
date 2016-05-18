@@ -13,36 +13,33 @@ export class NewsPage {
   }
   
     constructor(nav, navParams, http) {
-    /*console.log('News costructor firing!');*/
+    
     
     this.nav = nav;
     this.http = http;
 
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-    //
-    this.http.get('http://pfai.ie/mobile/pfainews').map(res => {
-      console.log(res)
+    
+    this.http.get('http://pfai.ie/mobile/pfainews', {
+        headers: Headers
     })
-    /*.subscribe(data => {
-      console.log(data);
-    }, error => {
-      console.log('Failed');
-    })*/;
-
-
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for(let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+    .map(res => res.json())
+    .subscribe((data) => {
+        this.items = data;
+        console.log(this.items);
+        
+    });
+        
+    
   }
+    
+  /*showLoader(){
+    let loading = Loading.create({
+      content: 'Please wait...'
+    });
+    this.nav.present(loading);
+  }*/
 
   itemTapped(event, item) {
      this.nav.push(ArticlePage, {
