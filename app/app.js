@@ -54,3 +54,4 @@ class MyApp {
     nav.setRoot(page.component);
   }
 }
+

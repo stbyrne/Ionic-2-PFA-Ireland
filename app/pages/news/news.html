@@ -14,11 +14,7 @@
     </button>-->
       
       <button ion-item *ngFor="#item of items" (click)="itemTapped($event, item)">
-    <ion-avatar item-left [innerHTML]="item.field_image">
-      <!--<img src="img/avatar-cher.png">-->
-    </ion-avatar>
     <h2>{{item.node_title}}</h2>
-    <!--<h3 [innerHTML]="item.body"></h3>-->
   </button>
       
   </ion-list>
