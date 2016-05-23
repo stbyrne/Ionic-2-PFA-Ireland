@@ -1,0 +1,24 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>News</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+    <!--<button ion-item *ngFor="#item of items" (click)="itemTapped($event, item)">
+      <ion-icon [innerHTML]="item.field_image" item-left></ion-icon>
+      {{item.node_title}}
+      
+    </button>-->
+      
+      <button ion-item *ngFor="#item of items" (click)="itemTapped($event, item)">
+    <h2>{{item.node_title}}</h2>
+  </button>
+      
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.node_title}}</b>
+  </div>
+</ion-content>
