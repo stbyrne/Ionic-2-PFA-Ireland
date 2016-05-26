@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 @App({
   templateUrl: 'build/app.html',
     providers: [HTTP_PROVIDERS],
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+config: {} // http://ionicframework.com/docs/v2/api/config/Config/
   
 })
 class MyApp {

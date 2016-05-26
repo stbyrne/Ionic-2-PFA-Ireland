@@ -2,7 +2,7 @@ import {Page, NavController, NavParams, Loading} from 'ionic-angular';
 import {ArticlePage} from '../article/article';
 import {Http, Response} from 'angular2/http';
 import {Inject} from 'angular2/core';
-import {xml2json} from 'xml2json/index';
+
 
 
 @Page({
