@@ -1,8 +1,7 @@
 import {Page, NavController, NavParams, Loading} from 'ionic-angular';
 import {ArticlePage} from '../article/article';
 import {Http, Response} from 'angular2/http';
-import {Inject} from 'angular2/core';
-
+import {xmltojson} from 'xmltojson';
 
 
 @Page({
@@ -21,10 +20,10 @@ export class NewsPage {
     this.nav = nav;
     this.http = http;
     
-    /*let loading = Loading.create({
+    let loading = Loading.create({
       content: "Loading News..."
     })
-    this.nav.present(loading);*/
+    this.nav.present(loading);
         
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
@@ -32,18 +31,18 @@ export class NewsPage {
     this.http.get('http://pfai.ie/mobile/pfainews', {
         headers: Headers 
     })
-    .map((res) => JSON.parse(toJson(res.text(), '')))
+    /*.map((res) => res.text())*/
     .subscribe((data) => {
         
         /*this.items = Object.keys(data);*/
-        this.items = data.result.item;
-        console.log(this.items);
-        /*loading.dismiss();*/
+        /*this.items = data.result.item;*/
+        console.log(xmltojson.parseString(data));
+        loading.dismiss();
         
     }, (error) => {
         
         console.log('Error!');
-        /*loading.dismiss();*/
+        loading.dismiss();
         
     });
         
