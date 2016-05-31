@@ -1,7 +1,7 @@
 import {Page, NavController, NavParams, Loading} from 'ionic-angular';
 import {ArticlePage} from '../article/article';
 import {Http, Response} from 'angular2/http';
-import {xmltojson} from 'xmltojson';
+import {xml2js} from 'xml2js';
 
 
 @Page({
@@ -20,6 +20,7 @@ export class NewsPage {
     this.nav = nav;
     this.http = http;
     
+    
     let loading = Loading.create({
       content: "Loading News..."
     })
@@ -31,12 +32,17 @@ export class NewsPage {
     this.http.get('http://pfai.ie/mobile/pfainews', {
         headers: Headers 
     })
-    /*.map((res) => res.text())*/
+    .map((res) => res.text())
     .subscribe((data) => {
         
-        /*this.items = Object.keys(data);*/
-        /*this.items = data.result.item;*/
-        console.log(xmltojson.parseString(data));
+        var parseString = require('xml2js').parseString;
+        parseString(data, function (err, result) {
+            
+            console.log(result);
+            return result.result.item;
+            
+        });
+        console.log(parseString(data));
         loading.dismiss();
         
     }, (error) => {
