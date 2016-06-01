@@ -20,7 +20,6 @@ export class NewsPage {
     this.nav = nav;
     this.http = http;
     
-    
     let loading = Loading.create({
       content: "Loading News..."
     })
@@ -33,16 +32,16 @@ export class NewsPage {
         headers: Headers 
     })
     .map((res) => res.text())
-    .subscribe((data) => {
+    .subscribe((items) => {
         
-        var parseString = require('xml2js').parseString;
-        parseString(data, function (err, result) {
+        var parser = require('xml2js').Parser({explicitArray : false});
+        parser.parseString(items, function (err, result) {
             
-            console.log(result);
+            console.log(result.result.item);
             return result.result.item;
             
         });
-        console.log(parseString(data));
+        
         loading.dismiss();
         
     }, (error) => {
