@@ -15,6 +15,8 @@ var _news = require('./pages/news/news');
 
 var _search = require('./pages/search/search');
 
+var _article = require('./pages/article/article');
+
 var _transferList = require('./pages/transfer-list/transfer-list');
 
 var _http = require('angular2/http');
@@ -75,7 +77,7 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
   return MyApp;
 }()) || _class);
 
-},{"./pages/home/home":3,"./pages/news/news":4,"./pages/search/search":5,"./pages/transfer-list/transfer-list":6,"angular2/http":10,"ionic-angular":340,"ionic-native":388,"rxjs/add/operator/map":572}],2:[function(require,module,exports){
+},{"./pages/article/article":2,"./pages/home/home":3,"./pages/news/news":4,"./pages/search/search":5,"./pages/transfer-list/transfer-list":6,"angular2/http":10,"ionic-angular":340,"ionic-native":388,"rxjs/add/operator/map":572}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -89,7 +91,11 @@ var _dec, _class;
 
 var _ionicAngular = require('ionic-angular');
 
+var _core = require('angular2/core');
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/*import {DateFormatter} from 'angular2/src/facade/intl';*/
 
 var ArticlePage = exports.ArticlePage = (_dec = (0, _ionicAngular.Page)({
   templateUrl: 'build/pages/article/article.html'
@@ -112,7 +118,19 @@ var ArticlePage = exports.ArticlePage = (_dec = (0, _ionicAngular.Page)({
   return ArticlePage;
 }()) || _class);
 
-},{"ionic-angular":340}],3:[function(require,module,exports){
+/*@Pipe({
+    name: 'dateFormat'
+})
+export class DateFormat implements PipeTransform {
+    transform(value: any, args: string[]): any {
+        if (value) {
+            var date = value instanceof Date ? value : new Date(value);
+            return DateFormatter.format(date, 'pt', 'dd/MM/yyyy');
+        }
+    }
+}*/
+
+},{"angular2/core":9,"ionic-angular":340}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -165,6 +183,8 @@ var NewsPage = exports.NewsPage = (_dec = (0, _ionicAngular.Page)({
     }]);
 
     function NewsPage(nav, navParams, http) {
+        var _this = this;
+
         _classCallCheck(this, NewsPage);
 
         this.nav = nav;
@@ -182,14 +202,20 @@ var NewsPage = exports.NewsPage = (_dec = (0, _ionicAngular.Page)({
             headers: Headers
         }).map(function (res) {
             return res.text();
-        }).subscribe(function (items) {
+        }).subscribe(function (data) {
+
+            var value = [];
 
             var parser = require('xml2js').Parser({ explicitArray: false });
-            parser.parseString(items, function (err, result) {
 
-                console.log(result.result.item);
-                return result.result.item;
+            parser.parseString(data, function (err, result) {
+
+                value = result.result.item;
             });
+
+            _this.items = value;
+
+            console.log(_this.items);
 
             loading.dismiss();
         }, function (error) {

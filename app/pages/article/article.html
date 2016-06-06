@@ -6,11 +6,14 @@
 </ion-navbar>
 
 <ion-content>
- <div *ngIf="selectedItem" class="selection">
-    <b>{{selectedItem.node_title}}</b>
-    <ion-icon name="{{selectedItem.icon}}"></ion-icon>
-    <div [innerHTML]="selectedItem.body">
-      
+    <div *ngIf="selectedItem" class="selection">
+        <h2 class="article-title">{{selectedItem.node_title}}</h2>
+        <ion-card class="article">
+            <div [innerHTML]="selectedItem.field_image"></div>
+            <ion-card-content>
+                <span class="article-date">{{selectedItem.date}}</span>
+                <p [innerHTML]="selectedItem.body"></p>
+            </ion-card-content>
+        </ion-card>
     </div>
-  </div>
 </ion-content>

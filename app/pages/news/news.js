@@ -32,15 +32,21 @@ export class NewsPage {
         headers: Headers 
     })
     .map((res) => res.text())
-    .subscribe((items) => {
+    .subscribe((data) => {
+        
+        var value = [];
         
         var parser = require('xml2js').Parser({explicitArray : false});
-        parser.parseString(items, function (err, result) {
+        
+        parser.parseString(data, function (err, result) {
             
-            console.log(result.result.item);
-            return result.result.item;
-            
+            value = result.result.item;
+        
         });
+        
+        this.items = value;
+        
+        console.log(this.items);
         
         loading.dismiss();
         

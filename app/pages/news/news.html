@@ -6,19 +6,22 @@
 </ion-navbar>
 
 <ion-content>
-  <ion-list>
+  <ion-list class="news-list">
+      <ion-thumbnail>
     <!--<button ion-item *ngFor="#item of items" (click)="itemTapped($event, item)">
       <ion-icon [innerHTML]="item.field_image" item-left></ion-icon>
       {{item.node_title}}
       
     </button>-->
       
-      <button ion-item *ngFor="#item of items" (click)="itemTapped($event, item)">
-    <h2>{{item.node_title}}</h2>
-  </button>
-      
+        <button ion-item *ngFor="#item of items" (click)="itemTapped($event, item)">
+            <ion-icon class="news-thumb" [innerHTML]="item.thumbnail" item-left></ion-icon>
+            <h2 class="news-title">{{item.node_title}}</h2>
+            <p class="news-summary">{{item.body}}</p>
+        </button>
+      </ion-thumbnail>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
+  <!--<div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.node_title}}</b>
-  </div>
+  </div>-->
 </ion-content>

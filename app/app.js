@@ -3,6 +3,7 @@ import {StatusBar} from 'ionic-native';
 import {HomePage} from './pages/home/home';
 import {NewsPage} from './pages/news/news';
 import {SearchPage} from './pages/search/search';
+import {ArticlePage} from './pages/article/article';
 import {TransferListPage} from './pages/transfer-list/transfer-list';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import 'rxjs/add/operator/map';
