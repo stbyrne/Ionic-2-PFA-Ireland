@@ -19,14 +19,14 @@ export class NewsPage {
     
     this.nav = nav;
     this.http = http;
+        
+    // If we navigated to this page, we will have an item available as a nav param
+    this.selectedItem = navParams.get('item');
     
     let loading = Loading.create({
       content: "Loading News..."
     })
     this.nav.present(loading);
-        
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
         
     this.http.get('http://pfai.ie/mobile/pfainews', {
         headers: Headers 
@@ -67,8 +67,6 @@ export class NewsPage {
 
 }
 
-
-    /*this.nav.present(loading);*/
 
 
 
