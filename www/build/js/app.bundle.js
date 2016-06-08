@@ -189,6 +189,7 @@ var NewsPage = exports.NewsPage = (_dec = (0, _ionicAngular.Page)({
 
         this.nav = nav;
         this.http = http;
+        this.navParams = navParams;
 
         var loading = _ionicAngular.Loading.create({
             content: "Loading News..."
@@ -196,7 +197,14 @@ var NewsPage = exports.NewsPage = (_dec = (0, _ionicAngular.Page)({
         this.nav.present(loading);
 
         // If we navigated to this page, we will have an item available as a nav param
-        this.selectedItem = navParams.get('item');
+        /*this.selectedItem = this.navParams.get('item');*/
+
+        /*this.items = [{
+            "body": "Main body text",
+            "node_title": "Main Title",
+            "thumbnail": "<img src='./resources/icon.png'></img>",
+            "field_image": "<img src='./././resources/icon.png'></img>",
+        }];*/
 
         this.http.get('http://pfai.ie/mobile/pfainews', {
             headers: Headers
@@ -236,8 +244,6 @@ var NewsPage = exports.NewsPage = (_dec = (0, _ionicAngular.Page)({
 
     return NewsPage;
 }()) || _class);
-
-/*this.nav.present(loading);*/
 
 },{"../article/article":2,"angular2/http":10,"ionic-angular":340,"xml2js":590}],5:[function(require,module,exports){
 'use strict';
