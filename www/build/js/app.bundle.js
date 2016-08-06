@@ -15,8 +15,6 @@ var _news = require('./pages/news/news');
 
 var _search = require('./pages/search/search');
 
-var _article = require('./pages/article/article');
-
 var _transferList = require('./pages/transfer-list/transfer-list');
 
 var _http = require('angular2/http');
@@ -77,7 +75,7 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
   return MyApp;
 }()) || _class);
 
-},{"./pages/article/article":2,"./pages/home/home":3,"./pages/news/news":4,"./pages/search/search":5,"./pages/transfer-list/transfer-list":6,"angular2/http":10,"ionic-angular":340,"ionic-native":388,"rxjs/add/operator/map":572}],2:[function(require,module,exports){
+},{"./pages/home/home":3,"./pages/news/news":4,"./pages/search/search":5,"./pages/transfer-list/transfer-list":6,"angular2/http":10,"ionic-angular":340,"ionic-native":388,"rxjs/add/operator/map":572}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -117,18 +115,6 @@ var ArticlePage = exports.ArticlePage = (_dec = (0, _ionicAngular.Page)({
 
   return ArticlePage;
 }()) || _class);
-
-/*@Pipe({
-    name: 'dateFormat'
-})
-export class DateFormat implements PipeTransform {
-    transform(value: any, args: string[]): any {
-        if (value) {
-            var date = value instanceof Date ? value : new Date(value);
-            return DateFormatter.format(date, 'pt', 'dd/MM/yyyy');
-        }
-    }
-}*/
 
 },{"angular2/core":9,"ionic-angular":340}],3:[function(require,module,exports){
 'use strict';
@@ -191,20 +177,13 @@ var NewsPage = exports.NewsPage = (_dec = (0, _ionicAngular.Page)({
         this.http = http;
         this.navParams = navParams;
 
+        // If we navigated to this page, we will have an item available as a nav param
+        this.selectedItem = navParams.get('item');
+
         var loading = _ionicAngular.Loading.create({
             content: "Loading News..."
         });
         this.nav.present(loading);
-
-        // If we navigated to this page, we will have an item available as a nav param
-        /*this.selectedItem = this.navParams.get('item');*/
-
-        /*this.items = [{
-            "body": "Main body text",
-            "node_title": "Main Title",
-            "thumbnail": "<img src='./resources/icon.png'></img>",
-            "field_image": "<img src='./././resources/icon.png'></img>",
-        }];*/
 
         this.http.get('http://pfai.ie/mobile/pfainews', {
             headers: Headers

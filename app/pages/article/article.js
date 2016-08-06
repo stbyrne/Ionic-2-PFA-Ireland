@@ -17,15 +17,3 @@ export class ArticlePage {
   }
 }
 
-
-/*@Pipe({
-    name: 'dateFormat'
-})
-export class DateFormat implements PipeTransform {
-    transform(value: any, args: string[]): any {
-        if (value) {
-            var date = value instanceof Date ? value : new Date(value);
-            return DateFormatter.format(date, 'pt', 'dd/MM/yyyy');
-        }
-    }
-}*/
